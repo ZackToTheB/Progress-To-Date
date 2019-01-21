@@ -34,7 +34,7 @@ function draw(){
     prog.innerHTML = (Math.round(c*100)/100).toString();
     
     fill(0);
-    rect(0, 1, c * (out/100), 58); //total rect
+    rect(0, 0, c * (out/100), 60); //total rect
     
     t = (end-now)/1000/60/60/24
     
@@ -42,37 +42,36 @@ function draw(){
     days.innerHTML = Math.floor(t).toString();
     t *= 24
     temp = ((100*(24-(t)%24))/24)
-    if (temp > 99.999){
-        console.log("day", temp);
-        fill(255);
-    } else{
-        fill(0);
-    }
-    rect(0, 81, temp * (out/100), 38);
+    rect(0, 80, temp * (out/100), 40);
+    fill(255);
+    rect(temp * (out/100), 80, out - (temp * (out/100)), 40);
+    fill(0);
     
     //hours
     hours.innerHTML = Math.floor(t).toString();
     t *= 60
     temp = ((100*(60-(t)%60))/60)
-    if (temp > 99.99){
-        console.log("hour", temp);
-        fill(255);
-    } else{
-        fill(0);
-    }
-    rect(0, 141, temp * (out/100), 38);
+    rect(0, 140, temp * (out/100), 40);
+    fill(255);
+    rect(temp * (out/100), 140, out - (temp * (out/100)), 40);
+    fill(0);
     
     //mins
     mins.innerHTML = Math.floor(t).toString();
     t *= 60
     temp = ((100*(60-(t%60))/60))
-    if (temp > 99.9){
-        fill(255);
-    } else{
-        fill(0);
-    }
     rect(0, 200, temp * (out/100), 40);
+    fill(255);
+    rect(temp * (out/100), 200, out - (temp * (out/100)), 40); //white space
+    fill(0);
     
     //secs
     secs.innerHTML = Math.floor(t).toString();
+}
+
+function clearBar(x){
+    //console.log(x);
+    fill(255);
+    rect(0, x, out, 40);
+    fill(0);
 }
