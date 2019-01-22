@@ -68,10 +68,3 @@ function draw(){
     //secs
     secs.innerHTML = Math.floor(t).toString();
 }
-
-function clearBar(x){
-    //console.log(x);
-    fill(255);
-    rect(0, x, out, 40);
-    fill(0);
-}
