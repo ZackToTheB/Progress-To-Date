@@ -31,9 +31,9 @@ function setup(){
 function draw(){
     let now = new Date().getTime();
     c = (now-start)*100/(end-start);
-    prog.innerHTML = (Math.round(c*100)/100).toString();
+    prog.innerHTML = (Math.round(c*10000)/10000).toString();
     
-    fill(0);
+    fill(r(c), g(c), 0);
     rect(0, 0, c * (out/100), 60); //total rect
     
     t = (end-now)/1000/60/60/24
@@ -42,29 +42,45 @@ function draw(){
     days.innerHTML = Math.floor(t).toString();
     t *= 24
     temp = ((100*(24-(t)%24))/24)
+    fill(r(temp), g(temp), 0);
     rect(0, 80, temp * (out/100), 40);
     fill(255);
     rect(temp * (out/100), 80, out - (temp * (out/100)), 40);
-    fill(0);
     
     //hours
     hours.innerHTML = Math.floor(t).toString();
     t *= 60
     temp = ((100*(60-(t)%60))/60)
+    fill(r(temp), g(temp), 0);
     rect(0, 140, temp * (out/100), 40);
     fill(255);
     rect(temp * (out/100), 140, out - (temp * (out/100)), 40);
-    fill(0);
     
     //mins
     mins.innerHTML = Math.floor(t).toString();
     t *= 60
     temp = ((100*(60-(t%60))/60))
+    fill(r(temp), g(temp), 0);
     rect(0, 200, temp * (out/100), 40);
     fill(255);
     rect(temp * (out/100), 200, out - (temp * (out/100)), 40); //white space
-    fill(0);
     
     //secs
     secs.innerHTML = Math.floor(t).toString();
+}
+
+function r(v){
+    if (v < 50){
+        return 255
+    } else {
+        return 255*((100-v)/50)
+    }
+}
+
+function g(v){
+    if (v > 50){
+        return 255
+    } else {
+        return 255*(v/50)
+    }
 }
