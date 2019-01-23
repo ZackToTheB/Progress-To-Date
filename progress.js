@@ -4,7 +4,7 @@ var end = new Date("March 22, 2019 00:00:00");
 var c; //current progress
 var t; //time left
 var temp;
-var out = 500; //outer rectangle width
+var out; //outer rectangle width
 //var goal = "End of term";
 
 document.addEventListener('DOMContentLoaded', function (){
