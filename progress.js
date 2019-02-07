@@ -30,8 +30,11 @@ function setup(){
 
 function draw(){
     let now = new Date().getTime();
+    let p = (((hour() * 60) + minute())  * 60) + second()
+    p = p*100/86400
     c = (now-start)*100/(end-start);
     prog.innerHTML = (Math.round(c*10000)/10000).toString();
+    dayP.innerHTML = (Math.round(p*100)/100).toString();
     
     fill(r(c), g(c), 0);
     rect(0, 0, c * (out/100), 60); //total rect
