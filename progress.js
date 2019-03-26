@@ -1,5 +1,5 @@
-var start = new Date("January 14, 2019 00:00:00");
-var end = new Date("March 22, 2019 00:00:00");
+var start = new Date("March 23, 2019 00:00:00");
+var end = new Date("April 29, 2019 00:00:00");
 
 var c; //current progress
 var t; //time left
@@ -33,43 +33,57 @@ function draw(){
     let p = (((hour() * 60) + minute())  * 60) + second()
     p = p*100/86400
     c = (now-start)*100/(end-start);
-    prog.innerHTML = (Math.round(c*10000)/10000).toString();
-    dayP.innerHTML = (Math.round(p*100)/100).toString();
-    
-    fill(r(c), g(c), 0);
-    rect(0, 0, c * (out/100), 60); //total rect
-    
-    t = (end-now)/1000/60/60/24
-    
-    //days
-    days.innerHTML = Math.floor(t).toString();
-    t *= 24
-    temp = ((100*(24-(t)%24))/24)
-    fill(r(temp), g(temp), 0);
-    rect(0, 80, temp * (out/100), 40);
-    fill(255);
-    rect(temp * (out/100), 80, out - (temp * (out/100)), 40);
-    
-    //hours
-    hours.innerHTML = Math.floor(t).toString();
-    t *= 60
-    temp = ((100*(60-(t)%60))/60)
-    fill(r(temp), g(temp), 0);
-    rect(0, 140, temp * (out/100), 40);
-    fill(255);
-    rect(temp * (out/100), 140, out - (temp * (out/100)), 40);
-    
-    //mins
-    mins.innerHTML = Math.floor(t).toString();
-    t *= 60
-    temp = ((100*(60-(t%60))/60))
-    fill(r(temp), g(temp), 0);
-    rect(0, 200, temp * (out/100), 40);
-    fill(255);
-    rect(temp * (out/100), 200, out - (temp * (out/100)), 40); //white space
-    
-    //secs
-    secs.innerHTML = Math.floor(t).toString();
+    if (c >= 100){
+        prog.innerHTML = "100";
+        dayP.innerHTML = "100";
+        fill(0, 255, 0);
+        rect(0, 0, out, 60);
+        days.innerHTML = "0";
+        rect(0, 80, out, 40);
+        hours.innerHTML = "0";
+        rect(0, 140, out, 40);
+        mins.innerHTML = "0";
+        rect(0, 200, out, 40);
+        secs.innerHTML = "0";
+    } else{
+        prog.innerHTML = (Math.round(c*10000)/10000).toString();
+        dayP.innerHTML = (Math.round(p*100)/100).toString();
+
+        fill(r(c), g(c), 0);
+        rect(0, 0, c * (out/100), 60); //total rect
+
+        t = (end-now)/1000/60/60/24
+
+        //days
+        days.innerHTML = Math.floor(t).toString();
+        t *= 24
+        temp = ((100*(24-(t)%24))/24)
+        fill(r(temp), g(temp), 0);
+        rect(0, 80, temp * (out/100), 40);
+        fill(255);
+        rect(temp * (out/100), 80, out - (temp * (out/100)), 40);
+
+        //hours
+        hours.innerHTML = Math.floor(t).toString();
+        t *= 60
+        temp = ((100*(60-(t)%60))/60)
+        fill(r(temp), g(temp), 0);
+        rect(0, 140, temp * (out/100), 40);
+        fill(255);
+        rect(temp * (out/100), 140, out - (temp * (out/100)), 40);
+
+        //mins
+        mins.innerHTML = Math.floor(t).toString();
+        t *= 60
+        temp = ((100*(60-(t%60))/60))
+        fill(r(temp), g(temp), 0);
+        rect(0, 200, temp * (out/100), 40);
+        fill(255);
+        rect(temp * (out/100), 200, out - (temp * (out/100)), 40); //white space
+
+        //secs
+        secs.innerHTML = Math.floor(t).toString();
+    }
 }
 
 function r(v){
