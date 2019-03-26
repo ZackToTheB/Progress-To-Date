@@ -1,4 +1,4 @@
 # Progress-To-Date
-Webpage to display the progress to a particular day.
+Webpage to display the progress to a particular date.
 
-``` Only goes to the end of term (22/03/2019) at the moment ```
+``` Hard coded to the end of Epiphany Term at Durham University (22/03/2019) at the moment ```

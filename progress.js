@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function (){
 function setup(){
     createCanvas(windowWidth, windowHeight);
     
-    out = innerWidth - 25;
+    out = innerWidth - 30;
     rect(0, 0, out, 60);
     text("Day:", 0, 75);
     rect(0, 80, out, 40);
