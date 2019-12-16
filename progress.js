@@ -1,5 +1,5 @@
 var start = new Date("December 14, 2019 00:00:00");
-var end = new Date("January 13, 2019 00:00:00");
+var end = new Date("January 13, 2020 00:00:00");
 
 var c; //current progress
 var t; //time left
